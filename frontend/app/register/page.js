@@ -21,7 +21,9 @@ export default function Register() {
       // Redirect ke halaman setelah register sukses
       router.push("/login"); // Redirect ke login setelah register
     } catch (err) {
-      setError(console.log(err));
+      // Perbaikan error handling
+      setError(err.response?.data?.message || "Registration failed");
+      console.error("Registration error:", err.response?.data);
     }
   };
 

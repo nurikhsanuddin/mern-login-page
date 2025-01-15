@@ -14,7 +14,7 @@ export async function GET(request) {
     // Ensure token has Bearer prefix
     const formattedToken = token.startsWith('Bearer ') ? token : `Bearer ${token}`;
     
-    const response = await axios.get("http://localhost:5000/api/user/profile", {
+    const response = await axios.get( process.env.NEXT_PUBLIC_API_URL + "/api/user/profile" || "http://localhost:5000/api/user/profile", {
       headers: {
         Authorization: formattedToken,
       },
